@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Ocultas — Os Segredos Que Ninguém te Conta</title>
+    <meta name="description" content="Receitas fáceis, baratas e lucrativas com ingredientes que você já tem em casa. Transforme sua cozinha em uma máquina de fazer dinheiro.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TELA DE BOAS-VINDAS / LOADING -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="lock-icon">🔒</div>
+            <h1 class="welcome-title">RECEITAS OCULTAS</h1>
+            <p class="welcome-subtitle">Você está prestes a descobrir...</p>
+            <p class="welcome-secret" id="welcome-secret">O segredo que sua avó nunca quis te contar</p>
+            <button class="welcome-btn" id="welcome-btn">REVELAR SEGREDOS</button>
+            <p class="welcome-warn">⚠️ Conteúdo adulto sobre empreendedorismo culinário</p>
+        </div>
+    </div>
+
+    <!-- POP-UP DE SAÍDA -->
+    <div id="exit-popup" class="exit-popup">
+        <div class="exit-content">
+            <button class="exit-close" onclick="closeExit()">×</button>
+            <h2>Espera! Não vá embora ainda... 😢</h2>
+            <p>Você viu apenas <span id="recipes-seen">3</span> de <strong>12 receitas secretas</strong> que estão transformando vidas.</p>
+            <p>Cada uma dessas receitas pode ser vendida por <strong>R$ 25 a R$ 80</strong> com custo de menos de <strong>R$ 5</strong>.</p>
+            <button class="exit-btn" onclick="closeExit()">QUERO VER MAIS RECEITAS</button>
+        </div>
+    </div>
+
+    <!-- BARRA DE PROGRESSO -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🔐</span>
+                <span class="logo-text">Receitas <strong>Ocultas</strong></span>
+            </div>
+            <div class="header-stats">
+                <span class="stat">🔥 <span id="online-count">2.847</span> cozinhando agora</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-badge">⚠️ CONTEÚDO REVELADO</span>
+            <h1 class="hero-title">
+                <span class="line1">Os 12 Segredos</span>
+                <span class="line2">Que Transformam</span>
+                <span class="line3 gradient-text">R$ 10 em R$ 80</span>
+            </h1>
+            <p class="hero-subtitle">
+                Receitas fáceis com ingredientes que <strong>você JÁ tem em casa</strong>.<br>
+                Descubra o método caseiro que está gerando <strong>mais de R$ 5.000/mês</strong> para centenas de pessoas comuns.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#receitas" class="btn-primary pulse-btn">🍳 VER AS 12 RECEITAS AGORA</a>
+                <p class="hero-mini">⏱️ Leitura média: <strong>10 minutos</strong> | ⭐ <strong>4.9/5</strong> (3.421 avaliações)</p>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Role para descobrir</span>
+            <div class="arrow-down">↓</div>
+        </div>
+    </section>
+
+    <!-- BARRA DE PROVA SOCIAL -->
+    <section class="social-proof">
+        <div class="social-track">
+            <div class="social-item">✅ <strong>Maria S.</strong> acabou de começar a vender</div>
+            <div class="social-item">💰 <strong>João P.</strong> faturou R$ 2.340 esta semana</div>
+            <div class="social-item">⭐ <strong>Ana L.</strong> avaliou: "Mudou minha vida"</div>
+            <div class="social-item">🔥 <strong>Carla M.</strong> saiu do zero com R$ 8.500/mês</div>
+            <div class="social-item">✅ <strong>Pedro R.</strong> comprou o guia completo</div>
+            <div class="social-item">💰 <strong>Lucia F.</strong> fez 47 vendas no mês</div>
+            <!-- duplicado para loop infinito -->
+            <div class="social-item">✅ <strong>Maria S.</strong> acabou de começar a vender</div>
+            <div class="social-item">💰 <strong>João P.</strong> faturou R$ 2.340 esta semana</div>
+            <div class="social-item">⭐ <strong>Ana L.</strong> avaliou: "Mudou minha vida"</div>
+            <div class="social-item">🔥 <strong>Carla M.</strong> saiu do zero com R$ 8.500/mês</div>
+        </div>
+    </section>
+
+    <!-- RECEITAS -->
+    <section class="recipes" id="receitas">
+        <div class="section-header">
+            <span class="section-badge">📖 AS 12 RECEITAS REVELADAS</span>
+            <h2 class="section-title">Comece com <span class="gradient-text">o que tem na sua cozinha</span></h2>
+            <p class="section-subtitle">Cada receita inclui vídeo explicativo, lista de ingredientes e o <strong>segredo de venda</strong> que ninguém te conta.</p>
+        </div>
+
+        <!-- RECEITA 1 -->
+        <article class="recipe-card" data-recipe="1">
+            <div class="recipe-header">
+                <div class="recipe-number">01</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Bolo de Cenoura Fofinho de Liquidificador</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 35 min</span>
+                        <span class="meta-item">📊 R$ 4,50 de custo</span>
+                        <span class="meta-item">💰 Vende por R$ 30</span>
+                        <span class="meta-item">⭐ 4.9 (892)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">8:42</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Ingredientes (todos comuns):</h4>
+                    <ul class="ingredients">
+                        <li>3 cenouras médias (R$ 1,50)</li>
+                        <li>4 ovos (R$ 1,20)</li>
+                        <li>1 xícara de óleo (R$ 0,80)</li>
+                        <li>2 xícaras de açúcar (R$ 0,50)</li>
+                        <li>2 xícaras de farinha (R$ 0,80)</li>
+                        <li>1 colher de fermento (R$ 0,20)</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo (Super Fácil):</h4>
+                    <ol class="steps">
+                        <li>Bata tudo no liquidificador por 3 minutos</li>
+                        <li>Despeje em forma untada</li>
+                        <li>Forno 180°C por 35 minutos</li>
+                        <li>Cobertura: 3 colheres de chocolate em pó + 1 lata de leite condensado</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> Use forma de alumínio com furo no meio (R$ 15 em qualquer loja). O cliente PAGA mais caro porque acha que é "caseiro de verdade". Embale com papel celofane e laço — vende por R$ 30 tranquilamente.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Variações que vendem mais:</h5>
+                    <ul>
+                        <li>Adicione coco ralado na massa (+R$ 5 no preço)</li>
+                        <li>Cobertura de brigadeiro gourmet (+R$ 10)</li>
+                        <li>Recheio de nutella caseira (+R$ 15)</li>
+                    </ul>
+                    <h5>📱 Onde vender:</h5>
+                    <p>Instagram, grupos de WhatsApp do bairro, iFood, feiras locais. Uma pessoa comum consegue vender <strong>20 bolos por semana</strong>.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- RECEITA 2 -->
+        <article class="recipe-card" data-recipe="2">
+            <div class="recipe-header">
+                <div class="recipe-number">02</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Pão Caseiro Sem Sovar (Macio Por 7 Dias)</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 50 min</span>
+                        <span class="meta-item">📊 R$ 2,00 de custo</span>
+                        <span class="meta-item">💰 Vende por R$ 20</span>
+                        <span class="meta-item">⭐ 4.8 (1.2k)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">12:08</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Ingredientes:</h4>
+                    <ul class="ingredients">
+                        <li>1kg de farinha de trigo (R$ 4,00 ÷ 5 pães)</li>
+                        <li>2 tabletes de fermento biológico (R$ 1,20)</li>
+                        <li>1 colher de açúcar (R$ 0,05)</li>
+                        <li>1 colher de sal (R$ 0,02)</li>
+                        <li>2 xícaras de água morna (R$ 0,10)</li>
+                        <li>1/2 xícara de óleo (R$ 0,30)</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo:</h4>
+                    <ol class="steps">
+                        <li>Misture tudo em uma tigela com as mãos</li>
+                        <li>Deixe crescer por 30 minutos coberto</li>
+                        <li>Modele os pães sem sovar</li>
+                        <li>Mais 15 minutos descansando</li>
+                        <li>Forno 200°C por 25 minutos</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> 1 kg de farinha rende 5 pães grandes. Custo: R$ 2 por pão. Venda por R$ 15 a R$ 20. <strong>Lucro: 800%.</strong> Padaria vende por R$ 12 — você vende "caseiro" por R$ 20 e o cliente PAGA FELIZ.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Variações lucrativas:</h5>
+                    <ul>
+                        <li>Pão de queijo recheado (R$ 25 / cento)</li>
+                        <li>Pão de batata com catupiry (R$ 30)</li>
+                        <li>Pão integral com gergelim (R$ 28)</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- RECEITA 3 -->
+        <article class="recipe-card" data-recipe="3">
+            <div class="recipe-header">
+                <div class="recipe-number">03</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Brigadeiro Gourmet de 5 Sabores</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 20 min</span>
+                        <span class="meta-item">📊 R$ 8 → 50 unidades</span>
+                        <span class="meta-item">💰 Vende por R$ 2,50 cada</span>
+                        <span class="meta-item">⭐ 5.0 (2.1k)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">6:30</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Ingredientes base (50 unidades):</h4>
+                    <ul class="ingredients">
+                        <li>2 latas de leite condensado (R$ 5,00)</li>
+                        <li>4 colheres de chocolate em pó (R$ 0,80)</li>
+                        <li>1 colher de manteiga (R$ 0,20)</li>
+                        <li>1 caixinha de creme de leite (R$ 1,80)</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo:</h4>
+                    <ol class="steps">
+                        <li>Misture tudo em panela grossa</li>
+                        <li>Fogo baixo mexendo SEM PARAR (10 min)</li>
+                        <li>Despeje em prato untado, espere esfriar</li>
+                        <li>Enrole, passe no granulado</li>
+                        <li>Coloque em forminhas R$ 2,50 cada</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> 50 unidades por R$ 8. Venda a R$ 2,50 = R$ 125. <strong>Lucro: R$ 117 em 30 minutos.</strong> Variações: Ninho com Nutella, Oreo, Pistache, Limão Siciliano. Cada sabor vira "linha gourmet" — venda por R$ 3,50.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Os 5 sabores que mais vendem:</h5>
+                    <ol>
+                        <li>Chocolate Belga (clássico)</li>
+                        <li>Ninho com Nutella (premium)</li>
+                        <li>Oreo crocante (juventude)</li>
+                        <li>Pistache (luxo)</li>
+                        <li>Churros (sabor do momento)</li>
+                    </ol>
+                </div>
+            </div>
+        </article>
+
+        <!-- CTA NO MEIO DA PÁGINA -->
+        <div class="cta-middle">
+            <div class="cta-middle-box">
+                <span class="cta-tag">⚡ OFERTA RELÂMPAGO</span>
+                <h2>Pare. Você está a 3 receitas de descobrir o <span class="gradient-text">método completo</span>.</h2>
+                <p>Essas 12 receitas são apenas a <strong>amostra grátis</strong>. O método completo mostra:</p>
+                <ul class="cta-list">
+                    <li>✅ Como precificar sem perder cliente nem dinheiro</li>
+                    <li>✅ Os 7 canais de venda que esgotam sua produção</li>
+                    <li>✅ Como achar fornecedores com 70% de desconto</li>
+                    <li>✅ O script de vendas que fecha no WhatsApp</li>
+                    <li>✅ Mais de 40 receitas lucrativas prontas</li>
+                </ul>
+                <p class="cta-price">De <s>R$ 497</s> por apenas <span class="big-price">R$ 47</span></p>
+                <a href="#oferta-final" class="btn-primary big pulse-btn">🚀 QUERO O MÉTODO COMPLETO AGORA</a>
+                <p class="cta-guarantee">🔒 7 dias de garantia ou seu dinheiro de volta</p>
+            </div>
+        </div>
+
+        <!-- RECEITA 4 -->
+        <article class="recipe-card" data-recipe="4">
+            <div class="recipe-header">
+                <div class="recipe-number">04</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Coxinha de Frango (Sem Fritar, No Forno)</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 45 min</span>
+                        <span class="meta-item">📊 R$ 12 → 30 un</span>
+                        <span class="meta-item">💰 Vende por R$ 3 cada</span>
+                        <span class="meta-item">⭐ 4.9 (756)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">9:15</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Massa:</h4>
+                    <ul class="ingredients">
+                        <li>2 xícaras de caldo de frango (R$ 0,50)</li>
+                        <li>2 xícaras de farinha (R$ 0,80)</li>
+                        <li>1 colher de manteiga (R$ 0,20)</li>
+                        <li>Sal e temperos a gosto</li>
+                    </ul>
+                    <h4>Recheio:</h4>
+                    <ul class="ingredients">
+                        <li>2 peitos de frango desfiado (R$ 6,00)</li>
+                        <li>1 cebola, 2 dentes de alho, cheiro verde</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo:</h4>
+                    <ol class="steps">
+                        <li>Ferva o caldo, junte a farinha de uma vez, mexa até desgrudar</li>
+                        <li>Recheie o frango temperado</li>
+                        <li>Modele as coxinhas, passe no ovo e na farinha</li>
+                        <li>Forno 200°C por 25 min (sem óleo!)</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> "Coxinha de forno saudável" vende 3x mais. Custa R$ 0,40, vende por R$ 3,50. <strong>Lucro: R$ 93 por fornada.</strong> Use "linha fitness" e cobre R$ 4,50.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Variações campeãs de venda:</h5>
+                    <ul>
+                        <li>Coxinha de carne seca (R$ 5 cada)</li>
+                        <li>Coxinha de palmito (vegetariana, R$ 4,50)</li>
+                        <li>Coxinha catupiry (premium, R$ 6)</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- RECEITA 5 -->
+        <article class="recipe-card" data-recipe="5">
+            <div class="recipe-header">
+                <div class="recipe-number">05</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Pudim no Micro-ondas (Sem Forno)</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 15 min</span>
+                        <span class="meta-item">📊 R$ 5 de custo</span>
+                        <span class="meta-item">💰 Vende por R$ 35</span>
+                        <span class="meta-item">⭐ 4.9 (1.5k)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">5:50</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Ingredientes:</h4>
+                    <ul class="ingredients">
+                        <li>1 lata de leite condensado (R$ 2,50)</li>
+                        <li>1 caixinha de creme de leite (R$ 1,80)</li>
+                        <li>3 ovos (R$ 0,90)</li>
+                        <li>Calda: açúcar + água (R$ 0,20)</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo:</h4>
+                    <ol class="steps">
+                        <li>Bata tudo no liquidificador</li>
+                        <li>Despeje na forma de pudim com calda</li>
+                        <li>Micro-ondas por 10 minutos (potência alta)</li>
+                        <li>Espere esfriar e leve à geladeira 2h</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> Vende porque a cliente não tem pudim em casa mas tem micro-ondas. Custo R$ 5, vende R$ 30-40. Embrulhe em caixa de papel kraft com laço — vira presente gourmet.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Variações irresistíveis:</h5>
+                    <ul>
+                        <li>Pudim de leite ninho (R$ 45)</li>
+                        <li>Pudim de chocolate branco (R$ 40)</li>
+                        <li>Pudim de maracujá (R$ 38)</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- RECEITA 6 -->
+        <article class="recipe-card" data-recipe="6">
+            <div class="recipe-header">
+                <div class="recipe-number">06</div>
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Pizza de Liquidificador (Massa Sem Sovar)</h3>
+                    <div class="recipe-meta">
+                        <span class="meta-item">⏱️ 30 min</span>
+                        <span class="meta-item">📊 R$ 6 de custo</span>
+                        <span class="meta-item">💰 Vende por R$ 35</span>
+                        <span class="meta-item">⭐ 4.8 (643)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-fake" data-video-id="dQw4w9WgXcQ" onclick="playVideo(this)">
+                    <div class="play-button">▶</div>
+                    <div class="video-overlay-text">▶ CLIQUE PARA ASSISTIR O VÍDEO</div>
+                    <div class="video-duration">11:20</div>
+                </div>
+            </div>
+
+            <div class="recipe-body">
+                <div class="recipe-section">
+                    <h4>🛒 Massa (bater no liquidificador):</h4>
+                    <ul class="ingredients">
+                        <li>2 xícaras de farinha (R$ 0,80)</li>
+                        <li>1 xícara de leite (R$ 0,60)</li>
+                        <li>2 ovos (R$ 0,60)</li>
+                        <li>1/2 xícara de óleo (R$ 0,30)</li>
+                        <li>1 colher de fermento (R$ 0,20)</li>
+                        <li>Sal a gosto</li>
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <h4>👨‍🍳 Modo de Preparo:</h4>
+                    <ol class="steps">
+                        <li>Bata tudo no liquidificador</li>
+                        <li>Despeje em forma untada</li>
+                        <li>Adicione molho, mussarela, tomate e orégano</li>
+                        <li>Forno 200°C por 25 minutos</li>
+                    </ol>
+                </div>
+
+                <div class="recipe-secret">
+                    <span class="secret-tag">🔐 SEGREDO REVELADO</span>
+                    <p><strong>O truque:</strong> Ofereça "noite da pizza" — entregou pizza grande em caixa de papelão (R$ 1) por R$ 35. Família toda pede. Custo R$ 6, lucro R$ 29 por pizza. Faça 10 por noite = R$ 290/dia.</p>
+                </div>
+
+                <button class="expand-btn" onclick="toggleExpand(this)">▼ Ver mais detalhes e variações</button>
+                <div class="expand-content">
+                    <h5>💡 Sabores que vendem mais:</h5>
+                    <ul>
+                        <li>Calabresa com catupiry</li>
+                        <li>Frango com milho</li>
+                        <li>Quatro queijos (premium, R$ 45)</li>
+                        <li>Pepperoni (importada, R$ 55)</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+    <!-- OFERTA FINAL -->
+    <section class="final-offer" id="oferta-final">
+        <div class="offer-box">
+            <span class="offer-badge">🔥 OFERTA COM DESCONTO DE 90%</span>
+            <h2 class="offer-title">
+                O Método <span class="gradient-text">Receitas Ocultas</span><br>
+                Para Revender e Faturar
+            </h2>
+            <p class="offer-subtitle">Tudo que você precisa para transformar sua cozinha em uma máquina de fazer dinheiro — sem experiência, sem investimento alto, sem sair de casa.</p>
+
+            <div class="offer-stack">
+                <div class="stack-item">
+                    <span class="stack-icon">📖</span>
+                    <div>
+                        <strong>Guia "Receitas Ocultas" Completo</strong>
+                        <p>42 receitas lucrativas testadas e validadas</p>
+                    </div>
+                    <span class="stack-value">R$ 297</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">🎥</span>
+                    <div>
+                        <strong>Mais de 20 vídeo-aulas em HD</strong>
+                        <p>Passo a passo visual, do básico ao avançado</p>
+                    </div>
+                    <span class="stack-value">R$ 497</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">📊</span>
+                    <div>
+                        <strong>Planilha de Precificação Mágica</strong>
+                        <p>Calcule o preço ideal de cada produto</p>
+                    </div>
+                    <span class="stack-value">R$ 197</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">💬</span>
+                    <div>
+                        <strong>200 Mensagens Prontas de Venda</strong>
+                        <p>Copie e cole — fecha venda no WhatsApp</p>
+                    </div>
+                    <span class="stack-value">R$ 247</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">📍</span>
+                    <div>
+                        <strong>Lista de Fornecedores Baratos</strong>
+                        <p>Mais de 80 contatos com até 70% de desconto</p>
+                    </div>
+                    <span class="stack-value">R$ 197</span>
+                </div>
+                <div class="stack-item">
+                    <span class="stack-icon">👥</span>
+                    <div>
+                        <strong>Grupo VIP de Alunas no WhatsApp</strong>
+                        <p>Networking, dicas e suporte diário</p>
+                    </div>
+                    <span class="stack-value">R$ 397</span>
+                </div>
+            </div>
+
+            <div class="offer-total">
+                <p>Valor total: <s>R$ 1.832</s></p>
+                <p class="offer-today">Hoje por apenas:</p>
+                <div class="big-price-box">
+                    <span class="currency">R$</span>
+                    <span class="big-price">47</span>
+                    <span class="cents">,00</span>
+                </div>
+                <p class="installment">ou 12x de <strong>R$ 4,89</strong> no cartão</p>
+            </div>
+
+            <a href="#" class="btn-primary huge pulse-btn" onclick="buyNow(event)">💰 QUERO COMEÇAR A LUCRAR AGORA</a>
+
+            <div class="guarantee">
+                <div class="guarantee-icon">🛡️</div>
+                <div>
+                    <strong>Garantia Incondicional de 7 Dias</strong>
+                    <p>Compre, acesse, teste. Se não gostar por QUALQUER motivo, devolvo 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+                </div>
+            </div>
+
+            <div class="security-badges">
+                <span>🔒 Pagamento 100% Seguro</span>
+                <span>⚡ Acesso Imediato</span>
+                <span>💳 Pix, Cartão ou Boleto</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2 class="section-title">O que dizem quem <span class="gradient-text">já comprou</span></h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Em 2 semanas já tinha faturado R$ 1.800. Nunca tinha vendido nada na vida."</p>
+                <strong>— Maria S., São Paulo</strong>
+            </div>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"O grupo VIP vale ORO. As meninas me ajudam a precificar tudo direitinho."</p>
+                <strong>— Carla M., Belo Horizonte</strong>
+            </div>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Sai do emprego. Hoje fatura R$ 7.000/mês só com bolo de pote e brownie."</p>
+                <strong>— João P., Rio de Janeiro</strong>
+            </div>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Melhor R$ 47 que já gastei. As 200 mensagens de venda me salvaram."</p>
+                <strong>— Lucia F., Salvador</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="section-header">
+            <h2 class="section-title">Perguntas <span class="gradient-text">Frequentes</span></h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">❓ Preciso de experiência na cozinha?</div>
+                <div class="faq-a">Não! As receitas são pensadas para iniciantes. Se você sabe ligar o fogão, consegue fazer e vender.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">❓ Quanto preciso investir para começar?</div>
+                <div class="faq-a">Menos de R$ 50. Os ingredientes são comuns e baratos. Você recupera o investimento na primeira semana.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">❓ Como vou receber o acesso?</div>
+                <div class="faq-a">Imediatamente após o pagamento, você recebe login e senha no seu e-mail. Acesso vitalício.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">❓ E se eu não gostar?</div>
+                <div class="faq-a">Garantia de 7 dias. Devolvemos 100% do valor sem perguntas.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-q">❓ Funciona em qualquer cidade?</div>
+                <div class="faq-a">Sim. O método funciona em cidade pequena, média ou grande. A demanda existe em todo lugar.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>🔐 <strong>Receitas Ocultas</strong> — Os segredos que ninguém te conta</p>
+        <p class="footer-small">© 2026 Todos os direitos reservados. Este site não é afiliado ao Facebook, Instagram ou Google.</p>
+        <p class="footer-small">Os resultados podem variar de pessoa para pessoa. Este material é informativo e não garante resultados financeiros.</p>
+    </footer>
+
+    <!-- NOTIFICAÇÃO FLUTUANTE -->
+    <div id="notification" class="notification">
+        <span class="notif-icon">🔔</span>
+        <div class="notif-text">
+            <strong id="notif-name">Ana de Curitiba</strong>
+            <span id="notif-action">acabou de comprar o Método Completo</span>
+            <span class="notif-time">há <span id="notif-time">2</span> minutos</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
